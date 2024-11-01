@@ -48,7 +48,7 @@ int	main(void)
 	char	*str = "happy";
 	char	*result;
 
-	result = ft_strmapi(str, ft_upper);
+	result = ft_strmapi(str, ft_uppercase);
 	if (result)
 	{
 		printf("Result: %s\n", result);
