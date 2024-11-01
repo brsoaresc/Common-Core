@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_count_words(char const *str, char c)
+static int	ft_count_substr(char const *str, char ch)
 {
 	int	i;
 	int	count;
@@ -21,10 +21,10 @@ static int	ft_count_words(char const *str, char c)
 	count = 0;
 	while (str[i])
 	{
-		if (str[i] != c)
+		if (str[i] != ch)
 		{
 			count++;
-			while (str[i] != c && str[i])
+			while (str[i] != ch && str[i])
 				i++;
 		}
 		else
@@ -33,12 +33,12 @@ static int	ft_count_words(char const *str, char c)
 	return (count);
 }
 
-static int	ft_length_words(char const *str, char c, int i)
+static int	ft_len_substr(char const *str, char ch, int i)
 {
 	int	len;
 
 	len = 0;
-	while (str[i] != c && str[i])
+	while (str[i] != ch && str[i])
 	{
 		i++;
 		len++;
@@ -53,14 +53,14 @@ static void	ft_free_memory(char **arr, int i)
 	free(arr);
 }
 
-static char	*ft_extract_substring(char const *str, int i, char c)
+static char	*ft_extract_substr(char const *str, int i, char ch)
 {
-	char	*substring;
-	int		substring_len;
+	char	*substr;
+	int		substr_len;
 
-	substring_len = ft_length_words(str, c, i);
-	substring = ft_substr(str, i, substring_len);
-	return (substring);
+	substr_len = ft_len_substr(str, ch, i);
+	substr = ft_substr(str, i, substr_len);
+	return (substr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -72,7 +72,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	words = ft_count_words(s, c);
+	words = ft_count_substr(s, c);
 	arr = (char **)malloc((words + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
@@ -82,10 +82,10 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		arr[j] = ft_extract_substring(s, i, c);
+		arr[j] = ft_extract_substr(s, i, c);
 		if (!arr[j])
 			return (ft_free_memory(arr, j), NULL);
-		i += ft_length_words(s, c, i);
+		i += ft_len_substr(s, c, i);
 		j++;
 	}
 	arr[j] = NULL;
