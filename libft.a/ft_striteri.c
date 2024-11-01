@@ -28,11 +28,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 /*
 #include <stdio.h>
 
-void	ft_uppercase(unsigned int i, char *c)
+void	ft_uppercase(unsigned int i, char *ch)
 {
 	(void)i;
-	if (*c >= 'a' && *c <= 'z')
-		*c = *c - 32;
+	if (*ch >= 'a' && *ch <= 'z')
+		*ch = *c - 32;
 }
 int	main(void)
 {
