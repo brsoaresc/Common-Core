@@ -34,13 +34,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 /*
 #include <stdio.h>
 
-char	ft_upper(unsigned int i, char c)
+char	ft_uppercase(unsigned int i, char ch)
 {
 	(void)i; 
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+	if (ch >= 'a' && ch <= 'z')
+		return (ch - 32);
 	else
-		return (c);
+		return (ch);
 }
 
 int	main(void)
